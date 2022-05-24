@@ -1,0 +1,18 @@
+@import "../../mixins.scss";
+
+.PreferenceButton {
+  @include circle(40px);
+  @include activated-background();
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 0;
+
+  padding: 5px;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,20 @@
+@import "./colors.scss";
+
+@mixin activated-background($color: $gray-background) {
+  &:hover,
+  &:focus,
+  &:active {
+    background: {
+      color: $color;
+    }
+    border: {
+      width: 0;
+    }
+  }
+}
+
+@mixin circle($width: auto) {
+  width: $width;
+  height: $width;
+  border-radius: 50%;
+}

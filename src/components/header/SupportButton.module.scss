@@ -1,0 +1,12 @@
+@import "../mixins.scss";
+
+.SupportButton {
+  @include circle(40px);
+  @include activated-background();
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 2px;
+}

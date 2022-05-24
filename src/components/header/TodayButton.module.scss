@@ -1,0 +1,12 @@
+.TodayButton {
+  font-size: 14px;
+  color: black;
+  background-color: white;
+  border-color: rgb(218, 220, 224);
+
+  &:hover {
+    color: black;
+    background-color: rgb(241, 243, 244);
+    border-color: rgb(218, 220, 224);
+  }
+}

@@ -1,0 +1,42 @@
+@import "../../colors.scss";
+
+.Header {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 64px;
+  padding: 8px;
+
+  color: rgb(95, 99, 104);
+  border: {
+    width: 0 0 1px 0;
+    style: solid;
+    color: $gray-border;
+  }
+
+  font: {
+    family: "Product Sans", Arial, sans-serif, "Product Sans", Arial, sans-serif;
+    size: 22px;
+    weight: 400;
+  }
+
+  .Left {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    margin-right: 84px;
+  }
+
+  .Mid {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .Right {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+  }
+}

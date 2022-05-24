@@ -1,0 +1,34 @@
+@import "../../mixins.scss";
+
+.PrevNextButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+
+  .ArrowButton {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: {
+      radius: 50%;
+      width: 0;
+    }
+
+    background {
+      color: transparent;
+    }
+    @include activated-background();
+
+    &:nth-child(1) {
+      padding: 12px;
+    }
+    &:nth-child(2) {
+      padding: 12px 11px 12px 13px;
+    }
+  }
+}

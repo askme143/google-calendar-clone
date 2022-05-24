@@ -1,0 +1,15 @@
+@import "../../mixins.scss";
+.DrawerButton {
+  @include circle(48px);
+  @include activated-background();
+
+  background-color: transparent;
+  border: 0;
+  padding: 12px;
+  margin: 0 4px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}

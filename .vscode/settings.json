@@ -15,5 +15,9 @@
   },
   "[typescriptreact]": {
     "editor.formatOnSave": false
+  },
+  "[scss]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
   }
 }
