@@ -2,32 +2,65 @@
 
 .CalendarHeader {
   display: flex;
+  min-height: 84px;
   height: 84px;
   min-width: 100%;
 
   .Time {
-    position: relative;
     width: 50px;
+    flex-shrink: 0;
+    position: relative;
+
     top: 64px;
     font: {
       size: 10px;
     }
-    flex-shrink: 0;
   }
+
   .Day {
+    overflow: auto;
     flex-grow: 1;
 
     display: flex;
-    padding: 0 9px;
 
     border: {
       width: 0 0 1px 0;
       style: solid;
       color: $gray-border;
     }
+
+    &::-webkit-scrollbar {
+      height: 0;
+      width: 0;
+    }
   }
+
   .Padding {
+    height: 100%;
+    box-sizing: content-box;
+    width: 9px;
+    flex-shrink: 0;
+    border-bottom: 1px solid $gray-border;
+  }
+  .Margin {
+    height: 100%;
     width: 10px;
-    flex-shrink: 0px;
+    flex-shrink: 0;
+  }
+  .Divider {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    div {
+      height: 20px;
+      border-right: 1px solid $gray-border;
+    }
+    &:last-child {
+      div {
+        height: 20px;
+        width: 1px;
+        border: 0;
+      }
+    }
   }
 }

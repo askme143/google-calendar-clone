@@ -4,18 +4,23 @@
   width: 49px;
   font-size: 10px;
   flex-shrink: 0;
-
-  position: relative;
+  overflow-y: auto;
 
   .TimeBlock {
     padding-right: 8px;
     display: flex;
     flex-direction: row-reverse;
     height: 48px;
+    background-color: white;
 
     span {
       position: relative;
       top: -6px;
     }
+  }
+
+  &::-webkit-scrollbar {
+    height: 0;
+    width: 0;
   }
 }

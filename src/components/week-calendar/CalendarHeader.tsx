@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {WeekDay} from "../../data/date-types";
 import DateHead from "./DateHead";
 import styles from "./CalendarHeader.module.scss";
+import {ScrollSync, ScrollSyncPane} from "react-scroll-sync";
 
 const initDaysOfWeek = [
   {past: true, selected: false, date: 23, weekDay: "MON" as WeekDay},
@@ -19,17 +20,22 @@ const CalendarHeader = () => {
   return (
     <div className={styles.CalendarHeader}>
       <div className={styles.Time}>
-        GMT+09
+        <span>GMT+09</span>
       </div>
-      <div className={styles.Day}>
-        {
-          daysOfWeek.map(
-              ({past, selected, date, weekDay}, index) =>
-                <DateHead key={index} past={past} selected={selected} date={date} weekDay={weekDay}/>,
-          )
-        }
-      </div>
-      <div className={styles.Padding} id="calendar-header-padding"/>
+      <ScrollSyncPane>
+        <div className={styles.Day}>
+          <div className={styles.Padding} />
+          {
+            daysOfWeek.reduce((acc, {past, selected, date, weekDay}, index) => {
+              acc.push(<DateHead key={index*2 + 1} past={past} selected={selected} date={date} weekDay={weekDay}/>);
+              acc.push(<div key={index*2 + 2} className={styles.Divider}><div/></div>);
+              return acc;
+            }, [<div key={0} className={styles.Divider}><div/></div>])
+          }
+          <div className={styles.Padding} />
+        </div>
+      </ScrollSyncPane>
+      <div className={styles.Margin} />
     </div>
   );
 };

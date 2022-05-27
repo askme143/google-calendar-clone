@@ -3,6 +3,7 @@
 .CalendarColumn {
   min-width: 100px;
   flex-grow: 1;
+  height: fit-content;
 
   border-left: 1px solid $gray-border;
 }

@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useRef} from "react";
 import styles from "./CalendarSide.module.scss";
 
 const CalendarSide = () => {
+  const sideRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className={styles.CalendarSide}>
+    <div className={styles.CalendarSide} ref={sideRef}>
       <div className={styles.TimeBlock}><span></span></div>
       <div className={styles.TimeBlock}><span>오전 1시</span></div>
       <div className={styles.TimeBlock}><span>오전 2시</span></div>
