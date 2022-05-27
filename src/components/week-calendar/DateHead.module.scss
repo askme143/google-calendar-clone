@@ -1,0 +1,87 @@
+@import "../../mixins.scss";
+
+.DateHead {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+
+  overflow-x: visible;
+
+  flex-grow: 1;
+
+  border-right: 1px solid $gray-border;
+  &:first-child {
+    border-left: 1px solid $gray-border;
+  }
+
+  & > span {
+    font: {
+      size: 11px;
+      family: Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
+    }
+    color: $gray-disabled-text;
+  }
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include circle(46px);
+    border: 0;
+
+    font-variant: tabular-nums;
+    -webkit-font-feature-settings: "tnum" 1;
+    font-feature-settings: "tnum" 1;
+    font-size: 25px;
+
+    background-color: transparent;
+
+    &:hover {
+      background-color: $gray-background;
+    }
+    & > span {
+      color: black;
+    }
+  }
+
+  &.Selected {
+    & > span {
+      color: $primary;
+    }
+
+    button {
+      color: white;
+      background-color: $primary;
+
+      &:hover {
+        background-color: $primary-dark;
+      }
+
+      & > span {
+        color: white;
+      }
+    }
+  }
+
+  &.Past {
+    & > span {
+      color: $gray-disabled-text;
+    }
+
+    button {
+      color: $gray-disabled-text;
+      background-color: transparent;
+
+      &:hover {
+        background-color: $gray-background;
+      }
+
+      & > span {
+        color: $gray-disabled-text;
+      }
+    }
+  }
+}

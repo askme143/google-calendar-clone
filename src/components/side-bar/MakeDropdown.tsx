@@ -1,12 +1,13 @@
 import React from "react";
-import {Button, Dropdown} from "react-bootstrap";
+import {Dropdown} from "react-bootstrap";
 import styles from "./MakeDropdown.module.scss";
 
-const MakeButton = () => {
-  return <><Button className={styles.MakeDropdown}>만들기</Button>
-    <Dropdown>
+console.log(styles);
 
-      <Dropdown.Toggle className={styles.MakeDropdown}>
+const MakeButton = () => {
+  return (
+    <Dropdown>
+      <Dropdown.Toggle id={styles["make-dropdown"]}>
         <svg width="36" height="36" viewBox="0 0 36 36">
           <path fill="#34A853" d="M16 16v14h4V20z">
           </path><path fill="#4285F4" d="M30 16H20l-4 4h14z">
@@ -17,7 +18,12 @@ const MakeButton = () => {
         </svg>
         만들기
       </Dropdown.Toggle>
-    </Dropdown></>;
+      <Dropdown.Menu>
+        <Dropdown.Item href="#">이벤트</Dropdown.Item>
+        <Dropdown.Item href="#">할 일</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  );
 };
 
 export default MakeButton;

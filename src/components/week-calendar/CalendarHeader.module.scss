@@ -1,0 +1,33 @@
+@import "../../colors.scss";
+
+.CalendarHeader {
+  display: flex;
+  height: 84px;
+  min-width: 100%;
+
+  .Time {
+    position: relative;
+    width: 50px;
+    top: 64px;
+    font: {
+      size: 10px;
+    }
+    flex-shrink: 0;
+  }
+  .Day {
+    flex-grow: 1;
+
+    display: flex;
+    padding: 0 9px;
+
+    border: {
+      width: 0 0 1px 0;
+      style: solid;
+      color: $gray-border;
+    }
+  }
+  .Padding {
+    width: 10px;
+    flex-shrink: 0px;
+  }
+}

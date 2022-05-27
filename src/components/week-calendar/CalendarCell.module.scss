@@ -1,0 +1,8 @@
+@import "../../colors.scss";
+
+.CalendarCell {
+  height: 48px;
+  width: 100%;
+
+  border-top: 1px solid $gray-border;
+}

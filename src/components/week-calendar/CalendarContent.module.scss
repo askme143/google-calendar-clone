@@ -1,0 +1,45 @@
+@import "../../colors.scss";
+
+.CalendarContent {
+  display: flex;
+  height: 100%;
+  min-width: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
+
+  .CalendarGrid {
+    display: flex;
+    align-content: stretch;
+    flex-grow: 1;
+  }
+
+  .Padding {
+    box-sizing: content-box;
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    height: 10px;
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background: #dadce0;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    min-height: 40px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb:hover {
+    background: #bdc1c6;
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background: #80868b;
+  }
+}

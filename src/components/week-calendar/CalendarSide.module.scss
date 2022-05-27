@@ -1,0 +1,21 @@
+@import "../../colors.scss";
+
+.CalendarSide {
+  width: 49px;
+  font-size: 10px;
+  flex-shrink: 0;
+
+  position: relative;
+
+  .TimeBlock {
+    padding-right: 8px;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 48px;
+
+    span {
+      position: relative;
+      top: -6px;
+    }
+  }
+}
