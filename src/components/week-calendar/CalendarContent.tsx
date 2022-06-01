@@ -2,7 +2,7 @@ import React from "react";
 import CalendarSide from "./CalendarSide";
 import styles from "./CalendarContent.module.scss";
 import CalendarColumn from "./CalendarColumn";
-import {ScrollSync, ScrollSyncPane} from "react-scroll-sync";
+import {ScrollSyncPane} from "react-scroll-sync";
 
 const CalendarContent = () => {
   return (

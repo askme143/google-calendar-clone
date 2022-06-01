@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {WeekDay} from "../../data/date-types";
 import DateHead from "./DateHead";
 import styles from "./CalendarHeader.module.scss";
-import {ScrollSync, ScrollSyncPane} from "react-scroll-sync";
+import {ScrollSyncPane} from "react-scroll-sync";
 
 const initDaysOfWeek = [
   {past: true, selected: false, date: 23, weekDay: "MON" as WeekDay},
