@@ -5,29 +5,24 @@ import styles from "./PrevNextButton.module.scss";
 import {useSelector, useDispatch} from "react-redux";
 import {RootState} from "../../store";
 import {setDate} from "../../features/date/date-slice";
-
-const WEEK_MILLIS = 7*24*60*60*1000;
+import {movePrevWeek, moveNextWeek} from "../../data/date";
 
 const PrevNextButton = () => {
   const date = useSelector((state: RootState) => state.date.date);
   const dispatch = useDispatch();
 
-
-  const moveNextWeek = () => {
-    const newDate = new Date(date.getTime() + WEEK_MILLIS);
-    const action = setDate(newDate);
+  const onClickPrev = () => {
+    const action = setDate(movePrevWeek(date));
     dispatch(action);
   };
-
-  const movePrevWeek = () => {
-    const newDate = new Date(date.getTime() - WEEK_MILLIS);
-    const action = setDate(newDate);
+  const onClickNext = () => {
+    const action = setDate(moveNextWeek(date));
     dispatch(action);
   };
 
   return <div className={styles.PrevNextButton}>
-    <Button className={styles.ArrowButton} variant="outline-secondary" onClick={movePrevWeek}><GrPrevious/></Button>
-    <Button className={styles.ArrowButton} variant="outline-secondary" onClick={moveNextWeek}><GrNext/></Button>
+    <Button className={styles.ArrowButton} variant="outline-secondary" onClick={onClickPrev}><GrPrevious/></Button>
+    <Button className={styles.ArrowButton} variant="outline-secondary" onClick={onClickNext}><GrNext/></Button>
   </div>;
 };
 

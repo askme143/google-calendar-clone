@@ -1,21 +1,26 @@
-import React, {useState} from "react";
-import {WeekDay} from "../../data/date-types";
+import React from "react";
 import DateHead from "./DateHead";
 import styles from "./CalendarHeader.module.scss";
 import {ScrollSyncPane} from "react-scroll-sync";
-
-const initDaysOfWeek = [
-  {past: true, selected: false, date: 23, weekDay: "MON" as WeekDay},
-  {past: false, selected: true, date: 24, weekDay: "TUE" as WeekDay},
-  {past: false, selected: false, date: 25, weekDay: "WED" as WeekDay},
-  {past: false, selected: false, date: 26, weekDay: "THU" as WeekDay},
-  {past: false, selected: false, date: 27, weekDay: "FRI" as WeekDay},
-  {past: false, selected: false, date: 28, weekDay: "SAT" as WeekDay},
-  {past: false, selected: false, date: 29, weekDay: "SUN" as WeekDay},
-];
+import {useSelector} from "react-redux";
+import {RootState} from "../../store";
+import {compareWithToday, dayNumToWeekDay, getDatesOfWeek} from "../../data/date";
 
 const CalendarHeader = () => {
-  const [daysOfWeek, setDaysOfWeek] = useState(initDaysOfWeek);
+  const date = useSelector((state: RootState) => state.date.date);
+
+  const datesOfWeek = getDatesOfWeek(date);
+  const headProps = datesOfWeek.map((date) => {
+    const compareResult = compareWithToday(date);
+    return {
+      past: compareResult < 0,
+      today: compareResult === 0,
+      date: date.getDate(),
+      weekDay: (dayNumToWeekDay(date.getDay()) ?? "SUN"),
+    };
+  });
+
+  console.log(datesOfWeek);
 
   return (
     <div className={styles.CalendarHeader}>
@@ -26,8 +31,8 @@ const CalendarHeader = () => {
         <div className={styles.Day}>
           <div className={styles.Padding} />
           {
-            daysOfWeek.reduce((acc, {past, selected, date, weekDay}, index) => {
-              acc.push(<DateHead key={index*2 + 1} past={past} selected={selected} date={date} weekDay={weekDay}/>);
+            headProps.reduce((acc, {past, today, date, weekDay}, index) => {
+              acc.push(<DateHead key={index*2 + 1} past={past} today={today} date={date} weekDay={weekDay}/>);
               acc.push(<div key={index*2 + 2} className={styles.Divider}><div/></div>);
               return acc;
             }, [<div key={0} className={styles.Divider}><div/></div>])
