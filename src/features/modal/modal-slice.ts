@@ -1,10 +1,12 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Task} from "../schedule/task-slice";
+import {Event} from "../schedule/event-slice";
 
 
 export interface ModalState {
   modalOpen: boolean,
   modalType: "event" | "task",
+  editingTime: boolean,
   tempTask: Task | null
   tempEvent: Event | null
 }
@@ -12,13 +14,14 @@ export interface ModalState {
 const initialState: ModalState = {
   modalOpen: false,
   modalType: "event",
+  editingTime: false,
   tempTask: null,
   tempEvent: null,
 };
 
 export const modalSlice = createSlice(
     {
-      name: "task",
+      name: "modal",
       initialState,
       reducers: {
         openModal: (state) => {
@@ -45,6 +48,11 @@ export const modalSlice = createSlice(
         clearTempEvent: (state) => {
           state.tempEvent = null;
         },
+        setTempEventTitle: (state, action: PayloadAction<string>) => {
+          if (state.tempEvent !== null) {
+            state.tempEvent.title =action.payload;
+          }
+        },
       },
     },
 );
@@ -58,5 +66,6 @@ export const {
   clearTempTask,
   setTempEvent,
   clearTempEvent,
+  setTempEventTitle,
 } = modalSlice.actions;
 export default modalSlice.reducer;

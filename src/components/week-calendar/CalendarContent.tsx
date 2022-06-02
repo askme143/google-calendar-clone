@@ -3,6 +3,7 @@ import CalendarSide from "./CalendarSide";
 import styles from "./CalendarContent.module.scss";
 import CalendarColumn from "./CalendarColumn";
 import {ScrollSyncPane} from "react-scroll-sync";
+import ScheduleModal from "./modal/ScheduleModal";
 
 const CalendarContent = () => {
   return (
@@ -21,6 +22,7 @@ const CalendarContent = () => {
           <CalendarColumn/>
           <CalendarColumn/>
           <div className={styles.Padding}/>
+          <ScheduleModal/>
         </div>
       </ScrollSyncPane>
     </div>

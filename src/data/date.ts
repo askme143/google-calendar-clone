@@ -1,4 +1,7 @@
-export const DAY_IN_MILLIS = 24*60*60*1000;
+export const SECOND_IN_MILLIS = 1000;
+export const MINUTE_IN_MILLIS = 60*SECOND_IN_MILLIS;
+export const HOUR_IN_MILLIS = 60*MINUTE_IN_MILLIS;
+export const DAY_IN_MILLIS = 24*HOUR_IN_MILLIS;
 export const WEEK_IN_MILLIS = 7*DAY_IN_MILLIS;
 
 
@@ -9,16 +12,32 @@ export type {
 };
 
 
-export function getDatesOfWeek(date: Date): Date[] {
-  // date.getDay() returns 0~6 match with SUN~SAT
-  const currentDay = date.getDay();
+function getStartOfDay(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
 
-  // MON~SUN is needed
-  const startOffset = -((currentDay + 6) % 7);
-  const offsets = Array(7).fill(0).map((_, idx) => idx + startOffset);
-  const datesOfWeek = offsets.map((offset) => new Date(date.getTime() + offset * DAY_IN_MILLIS));
+// AM 00:00 of monday of the week
+function getStartOfWeek(date: Date): Date {
+  const daysBefore = -((date.getDay() + 6) % 7);
+  const startOfDay = getStartOfDay(date);
+  return new Date(startOfDay.getTime() + daysBefore * DAY_IN_MILLIS);
+}
+
+// MON~SUN
+export function getDatesOfWeek(date: Date): Date[] {
+  const startOfWeek = getStartOfWeek(date);
+  const offsets = Array(7).fill(0).map((_, idx) => idx);
+  const datesOfWeek = offsets.map((offset) => new Date(startOfWeek.getTime() + offset * DAY_IN_MILLIS));
 
   return datesOfWeek;
+}
+
+// Nearest futrue time where minute is multiple of 15.
+export function getAlignedDate(date: Date): Date {
+  const alignedUnit = 15*MINUTE_IN_MILLIS;
+  const currentTime = date.getTime();
+
+  return new Date(currentTime - (currentTime % alignedUnit) + alignedUnit);
 }
 
 export function movePrevWeek(date: Date): Date {
@@ -31,7 +50,7 @@ export function moveNextWeek(date: Date): Date {
 
 export function compareWithToday(date: Date): number {
   const today = new Date();
-  const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const todayStart = getStartOfDay(today);
   const tomorrowStart = new Date(todayStart.getTime() + DAY_IN_MILLIS);
 
   if (date < todayStart) {
@@ -67,3 +86,4 @@ export function toKorWeekDay(weekDay: WeekDay) {
     case "SAT": {return "토";}
   }
 };
+

@@ -40,9 +40,9 @@ export const eventSlice = createSlice(
         },
         updateEvent: (state, action: PayloadAction<EventWithId>) => {
           const {id, event} = action.payload;
-          const oldTask = state.value.find((task) => task.id === id);
-          if (typeof oldTask !== "undefined") {
-            oldTask.event = event;
+          const oldEvent = state.value.find((event) => event.id === id);
+          if (typeof oldEvent !== "undefined") {
+            oldEvent.event = event;
           }
         },
       },
