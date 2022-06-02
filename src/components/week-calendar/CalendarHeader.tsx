@@ -20,8 +20,6 @@ const CalendarHeader = () => {
     };
   });
 
-  console.log(datesOfWeek);
-
   return (
     <div className={styles.CalendarHeader}>
       <div className={styles.Time}>

@@ -1,0 +1,24 @@
+@import "~react-day-picker/dist/style.css";
+@import "../../colors.scss";
+
+:root {
+  --rdp-cell-size: 30px;
+}
+
+h2.rdp-caption_label {
+  font-size: 14px;
+}
+
+.rdp-day_selected {
+  color: rgb(24, 90, 188) !important;
+  background-color: rgb(164, 196, 249) !important;
+}
+
+.rdp-day_outside {
+  color: rgb(112, 117, 122) !important;
+}
+
+.rdp-day_today {
+  color: white !important;
+  background-color: $primary-dark !important;
+}
