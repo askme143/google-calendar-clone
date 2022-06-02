@@ -9,7 +9,7 @@ import {RootState} from "../../store";
 
 const MiniCalendar = () => {
   const [month, setMonth] = useState<Date>();
-  const date = useSelector((state:RootState) => state.date.date);
+  const date = useSelector((state:RootState) => state.date.value);
   const dispatch = useDispatch();
 
   useEffect(() => {

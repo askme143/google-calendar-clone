@@ -7,7 +7,7 @@ import {RootState} from "../../store";
 import {compareWithToday, dayNumToWeekDay, getDatesOfWeek} from "../../data/date";
 
 const CalendarHeader = () => {
-  const date = useSelector((state: RootState) => state.date.date);
+  const date = useSelector((state: RootState) => state.date.value);
 
   const datesOfWeek = getDatesOfWeek(date);
   const headProps = datesOfWeek.map((date) => {

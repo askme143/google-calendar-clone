@@ -4,7 +4,7 @@ import {RootState} from "../../store";
 import {useSelector} from "react-redux";
 
 const TodaySpan = () => {
-  const date = useSelector((state: RootState) => state.date.date);
+  const date = useSelector((state: RootState) => state.date.value);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
 

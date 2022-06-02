@@ -8,7 +8,7 @@ import {setDate} from "../../features/date/date-slice";
 import {movePrevWeek, moveNextWeek} from "../../data/date";
 
 const PrevNextButton = () => {
-  const date = useSelector((state: RootState) => state.date.date);
+  const date = useSelector((state: RootState) => state.date.value);
   const dispatch = useDispatch();
 
   const onClickPrev = () => {
