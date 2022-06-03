@@ -2,7 +2,7 @@
   display: grid;
 
   grid-template-rows: 54px 36px auto;
-  grid-template-columns: 55px auto;
+  grid-template-columns: 30px auto;
 }
 
 .TitleItem {
@@ -30,8 +30,10 @@
 
 .LeftContainer {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+
+  width: 40px;
 
   svg {
     width: 20px;

@@ -12,8 +12,10 @@ const MakeButton = () => {
 
   const onClickCreateEvent = () => {
     const startDate = getAlignedDate(synchTime(date));
-
     const endDate = new Date(startDate.getTime() + HOUR_IN_MILLIS);
+
+    document.documentElement.style.setProperty("--modal-top", "120px");
+    document.documentElement.style.setProperty("--modal-left", "301px");
 
     dispatch(setTempEvent({
       title: "",

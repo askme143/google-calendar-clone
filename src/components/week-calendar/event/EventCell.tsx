@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useRef} from "react";
 import {useDispatch} from "react-redux";
 import {DAY_IN_MILLIS, makeTimeStr, MINUTE_IN_MILLIS} from "../../../data/date";
-import {openReadModal, setEventId, setTempEvent} from "../../../features/modal/schedule-modal-slice";
+import {openReadModal, setEventId, setModalOffset, setTempEvent} from "../../../features/modal/schedule-modal-slice";
 import {UserEventWithId} from "../../../features/schedule/user-event-slice";
 import styles from "./EventCell.module.scss";
 
@@ -38,6 +38,7 @@ const EventCell = (
     }: EventCellProp,
 ) => {
   const dispatch = useDispatch();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const endOfDay = new Date(startOfDay.getTime() + DAY_IN_MILLIS);
   const width = `calc(${widthPercent}% - ${WIDTH_PADDING_PX}px)`;
@@ -57,6 +58,28 @@ const EventCell = (
   const timeStr = `${startStr} ~ ${endStr}`;
 
   const handleClick = () => {
+    const offsetTop = ref.current?.offsetTop ?? 0;
+    const parentOffsetTop = ref.current?.parentElement?.getBoundingClientRect().top ?? 0;
+    const marginTop = 28;
+
+    const modalY = `min(400px, ${offsetTop + parentOffsetTop - marginTop}px)`;
+    let modalX: string = "";
+    switch (startOfDay.getDay()) {
+      case 1: modalX = "calc((100% - 321px) * 1 / 7 + 301px)"; break;
+      case 2: modalX = "calc((100% - 321px) * 2 / 7 + 301px)"; break;
+      case 3: modalX = "calc((100% - 321px) * 2 / 7 - 189px)"; break;
+      case 4: modalX = "calc((100% - 321px) * 3 / 7 - 189px)"; break;
+      case 5: modalX = "calc((100% - 321px) * 4 / 7 - 189px)"; break;
+      case 6: modalX = "calc((100% - 321px) * 5 / 7 - 189px)"; break;
+      case 7: modalX = "calc((100% - 321px) * 6 / 7 - 189px)"; break;
+      case 0: modalX = "calc((100% - 321px) * 7 / 7 - 189px)"; break;
+    };
+
+    document.documentElement.style.setProperty("--modal-top", modalY);
+    document.documentElement.style.setProperty("--modal-left", modalX);
+
+    console.log(ref.current?.offsetLeft, ref.current?.parentElement?.getBoundingClientRect().left, window.pageYOffset);
+    dispatch(setModalOffset({x: modalX, y: modalY}));
     dispatch(setTempEvent(userEvent.event));
     dispatch(setEventId(userEvent.id));
     dispatch(openReadModal());
@@ -64,6 +87,7 @@ const EventCell = (
 
   return (
     <div
+      ref={ref}
       style={{
         width,
         top,

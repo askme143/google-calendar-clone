@@ -1,9 +1,21 @@
 @import "../../../colors.scss";
 
-:global {
-  .modal-content {
-    width: 540px;
-  }
+:root {
+  --modal-top: "120px";
+  --modal-left: "301px";
+}
+
+.Dialog {
+  position: absolute;
+  width: 490px;
+  top: var(--modal-top);
+  left: var(--modal-left);
+
+  box-shadow: 0px 4px 5px 3px rgba(0, 0, 0, 0.16);
+}
+
+.Backdrop {
+  background-color: transparent;
 }
 
 .CreateHeader {

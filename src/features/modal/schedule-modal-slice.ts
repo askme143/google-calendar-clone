@@ -3,6 +3,8 @@ import {UserEvent} from "../schedule/user-event-slice";
 
 
 export interface ScheduleModalState {
+  offsetX: string,
+  offsetY: string,
   modalState: "create" | "read" | "edit",
   modalOpen: boolean,
   modalType: "event",
@@ -11,6 +13,8 @@ export interface ScheduleModalState {
 }
 
 const initialState: ScheduleModalState = {
+  offsetX: "301px",
+  offsetY: "120px",
   modalState: "create",
   modalOpen: false,
   modalType: "event",
@@ -23,6 +27,10 @@ export const modalSlice = createSlice(
       name: "scheduleModal",
       initialState,
       reducers: {
+        setModalOffset: (state, action: PayloadAction<{x: string, y:string}>) =>{
+          state.offsetX = action.payload.x;
+          state.offsetY = action.payload.x;
+        },
         openReadModal: (state) => {
           state.modalState = "read";
           state.modalOpen = true;
@@ -78,6 +86,7 @@ export const modalSlice = createSlice(
 );
 
 export const {
+  setModalOffset,
   openReadModal,
   openCreateModal,
   closeModal,

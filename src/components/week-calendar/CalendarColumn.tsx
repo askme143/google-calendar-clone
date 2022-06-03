@@ -15,14 +15,14 @@ interface CalendarColumnProp {
 
 const CalendarColumn = ({startOfDay}: CalendarColumnProp) => {
   const userEvents = useSelector((state:RootState) => state.userEvent.value);
-  const endOfDay = new Date(startOfDay.getTime() + DAY_IN_MILLIS - 1);
+  const endOfDay = new Date(startOfDay.getTime() + DAY_IN_MILLIS);
 
   const eventsOfDay = userEvents.filter((userEvent) => {
     const {start: eventStart, end: eventEnd} = userEvent.event;
 
     return !(
-      eventStart.getTime() > endOfDay.getTime() ||
-      eventEnd.getTime() < startOfDay.getTime()
+      eventStart.getTime() >= endOfDay.getTime() ||
+      eventEnd.getTime() <= startOfDay.getTime()
     );
   });
   const eventCells = eventsOfDay.map((userEvent, idx) => {

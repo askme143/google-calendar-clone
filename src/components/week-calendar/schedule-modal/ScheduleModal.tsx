@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import {Button, Modal} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
@@ -17,6 +17,7 @@ const ScheduleModal = () => {
   const tempEvent = useSelector((state: RootState) => state.scheduleModal.tempEvent);
   const eventId = useSelector((state: RootState) => state.scheduleModal.eventId);
   const dispatch = useDispatch();
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const readOnly = modalState === "read";
 
@@ -26,7 +27,6 @@ const ScheduleModal = () => {
 
   const handleSave = () => {
     // TODO: Check validity of the tempEvent
-
     switch (modalState) {
       case "create":
         if (tempEvent) dispatch(appendEvent(tempEvent));
@@ -41,8 +41,11 @@ const ScheduleModal = () => {
     handleClose();
   };
 
+
   return (
-    <Modal show={modalOpen} onHide={handleClose} className={styles.Modal}>
+    <Modal show={modalOpen} onHide={handleClose}
+      dialogClassName={styles.Dialog} backdropClassName={styles.Backdrop}
+      ref={ref}>
       <Modal.Header className={modalState === "create" ? styles.CreateHeader : styles.Header} closeButton>
         {
           modalState !== "create" ?
@@ -59,6 +62,7 @@ const ScheduleModal = () => {
         <Button variant="secondary">옵션 더보기</Button>
         <Button variant="primary" onClick={handleSave}>{readOnly ? "닫기" : "저장"}</Button>
       </Modal.Footer>
+
     </Modal>
   );
 };

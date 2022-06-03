@@ -6,6 +6,7 @@
   height: calc(100vh - 148px);
 
   .CalendarGrid {
+    position: relative;
     display: flex;
     align-content: stretch;
     flex-grow: 1;

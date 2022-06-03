@@ -22,13 +22,13 @@ const EventForm = () => {
 
   return (
     <Form className={styles.Form}>
-      <div/>
+      <div className={styles.LeftContainer}/>
       <div className={`${styles.TitleItem}`}>
         <Form.Control placeholder={readOnly ? "(제목 없음)" : "제목 추가"} value={title} onChange={(event) =>{
           onChangeTitle(event.target.value);
         }} readOnly={readOnly}></Form.Control>
       </div>
-      <div/>
+      <div className={styles.LeftContainer}/>
       <div className={styles.ModalTypeItem}>
         <Button variant="primary">이벤트</Button>
         <Button variant="outlined-secondary">할 일</Button>
