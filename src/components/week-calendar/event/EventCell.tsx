@@ -1,5 +1,7 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 import {DAY_IN_MILLIS, makeTimeStr, MINUTE_IN_MILLIS} from "../../../data/date";
+import {openReadModal, setEventId, setTempEvent} from "../../../features/modal/schedule-modal-slice";
 import {UserEventWithId} from "../../../features/schedule/user-event-slice";
 import styles from "./EventCell.module.scss";
 
@@ -35,6 +37,8 @@ const EventCell = (
       userEvent,
     }: EventCellProp,
 ) => {
+  const dispatch = useDispatch();
+
   const endOfDay = new Date(startOfDay.getTime() + DAY_IN_MILLIS);
   const width = `calc(${widthPercent}% - ${WIDTH_PADDING_PX}px)`;
 
@@ -52,6 +56,12 @@ const EventCell = (
   const endStr = makeTimeStr(eventEnd.getHours(), eventEnd.getMinutes());
   const timeStr = `${startStr} ~ ${endStr}`;
 
+  const handleClick = () => {
+    dispatch(setTempEvent(userEvent.event));
+    dispatch(setEventId(userEvent.id));
+    dispatch(openReadModal());
+  };
+
   return (
     <div
       style={{
@@ -59,7 +69,8 @@ const EventCell = (
         top,
         height,
       }}
-      className={styles.EventCell}>
+      className={styles.EventCell}
+      onClick={handleClick}>
       <div className={styles.Title}>{title.length ? title : "(제목 없음)"}</div>
       <div className={styles.Time}>{timeStr}</div>
     </div>);

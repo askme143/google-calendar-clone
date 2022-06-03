@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Form} from "react-bootstrap";
 import {useSelector, useDispatch} from "react-redux";
 import {RootState} from "../../../store";
-import {setTempEventTitle} from "../../../features/modal/create-modal-slice";
+import {setTempEventTitle} from "../../../features/modal/schedule-modal-slice";
 import {AiOutlineClockCircle} from "react-icons/ai";
 import TimeForm from "./TimeForm";
 
@@ -10,20 +10,23 @@ import styles from "./EventForm.module.scss";
 
 
 const EventForm = () => {
-  const tempEvent = useSelector((state: RootState) => state.createModal.tempEvent);
+  const modalState = useSelector((state: RootState) => state.scheduleModal.modalState);
+  const tempEvent = useSelector((state: RootState) => state.scheduleModal.tempEvent);
   const dispatch = useDispatch();
 
   const title = tempEvent?.title ?? "";
   const onChangeTitle = (title: string) => {
     dispatch(setTempEventTitle(title));
   };
+  const readOnly = modalState === "read";
+
   return (
     <Form className={styles.Form}>
       <div/>
       <div className={`${styles.TitleItem}`}>
-        <Form.Control placeholder="제목 추가" value={title} onChange={(event) =>{
+        <Form.Control placeholder={readOnly ? "(제목 없음)" : "제목 추가"} value={title} onChange={(event) =>{
           onChangeTitle(event.target.value);
-        }}></Form.Control>
+        }} readOnly={readOnly}></Form.Control>
       </div>
       <div/>
       <div className={styles.ModalTypeItem}>

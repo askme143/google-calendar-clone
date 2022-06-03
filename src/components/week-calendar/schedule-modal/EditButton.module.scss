@@ -1,0 +1,22 @@
+@import "../../../mixins.scss";
+
+.EditButton {
+  @include circle(38px);
+  @include activated-background();
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+
+  border: 0;
+
+  margin: 0 2px;
+  padding: 8px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}

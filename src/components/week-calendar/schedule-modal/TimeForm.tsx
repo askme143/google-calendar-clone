@@ -2,20 +2,21 @@ import React from "react";
 import {Form} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store";
-import {setTempEventAllDay} from "../../../features/modal/create-modal-slice";
+import {setTempEventAllDay} from "../../../features/modal/schedule-modal-slice";
 
 import styles from "./TimeForm.module.scss";
 import DateContainer from "./DateContainer";
 import TimeContainer from "./TimeContainer";
 
 const TimeForm = () => {
-  const tempEvent = useSelector((state: RootState) => state.createModal.tempEvent);
+  const modalState = useSelector((state: RootState) => state.scheduleModal.modalState);
+  const tempEvent = useSelector((state: RootState) => state.scheduleModal.tempEvent);
   const dispatch = useDispatch();
 
   if (tempEvent === null) return <></>;
   const {allDay} = tempEvent;
   const handleCheck = () => {
-    dispatch(setTempEventAllDay(!allDay));
+    if (modalState !== "read") dispatch(setTempEventAllDay(!allDay));
   };
 
   return (
@@ -28,7 +29,8 @@ const TimeForm = () => {
         <DateContainer isStart={false}/>
       </div>
       <div className={styles.SecondRow}>
-        <Form.Check type="checkbox" label="종일" id="allday-checkbox" checked={allDay} onChange={handleCheck}>
+        <Form.Check type="checkbox" label="종일" id="allday-checkbox"
+          disabled={modalState === "read"} checked={allDay} onChange={handleCheck}>
         </Form.Check>
       </div>
     </div>

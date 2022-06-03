@@ -17,7 +17,8 @@ function makeDateStr(date: Date) {
 }
 
 const DateContainer = ({isStart}: DateContainerProp) => {
-  const tempEvent = useSelector((state: RootState) => state.createModal.tempEvent);
+  const modalState = useSelector((state: RootState) => state.scheduleModal.modalState);
+  const tempEvent = useSelector((state: RootState) => state.scheduleModal.tempEvent);
   const ref = useOutSideClick<HTMLDivElement|null>(
       ()=>setShowCalendar(false),
       ()=>setShowCalendar(true),
@@ -30,11 +31,12 @@ const DateContainer = ({isStart}: DateContainerProp) => {
   const {start, end} = tempEvent;
   const date = isStart ? start : end;
   const dateStr = makeDateStr(date);
+  const readOnly = modalState === "read";
 
   return (
     <div className={styles.DateContainer} ref={ref}>
-      <Form.Control className={styles.DateInput} value={dateStr} onChange={()=>{}}/>
-      { showCalendar ?
+      <Form.Control className={styles.DateInput} value={dateStr} onChange={()=>{}} readOnly={readOnly}/>
+      { showCalendar && !readOnly ?
             <div className={styles.DateSelector}>
               <DateSelector isStart={isStart} date={date}/>
             </div> :

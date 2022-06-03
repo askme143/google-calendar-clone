@@ -3,7 +3,7 @@ import {Form, ListGroup} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 import {makeTimeStr} from "../../../data/date";
-import {setTempEventEnd, setTempEventStart} from "../../../features/modal/create-modal-slice";
+import {setTempEventEnd, setTempEventStart} from "../../../features/modal/schedule-modal-slice";
 import {useOutSideClick} from "../../../hooks";
 import {RootState} from "../../../store";
 
@@ -22,7 +22,8 @@ interface TimeContainerProp {
 
 const TimeContainer = ({isStart}: TimeContainerProp) => {
   const [showTimeList, setShowTimeList] = useState(false);
-  const tempEvent = useSelector((state:RootState) => state.createModal.tempEvent);
+  const modalState = useSelector((state: RootState) => state.scheduleModal.modalState);
+  const tempEvent = useSelector((state:RootState) => state.scheduleModal.tempEvent);
   const dispatch = useDispatch();
 
   const ref = useOutSideClick<HTMLDivElement>(() => {
@@ -36,6 +37,8 @@ const TimeContainer = ({isStart}: TimeContainerProp) => {
   const date = isStart ? tempEvent.start : tempEvent.end;
   const hour = date.getHours();
   const min = date.getMinutes();
+
+  const readOnly = modalState === "read";
 
   function onClickItem(date: Date, hour: number, min: number) {
     const newDate = new Date(date.getTime());
@@ -62,8 +65,8 @@ const TimeContainer = ({isStart}: TimeContainerProp) => {
 
   return (
     <div className={styles.TimeContainer} ref={ref}>
-      <Form.Control className={styles.TimeInput} value={makeTimeStr(hour, min)}/>
-      {showTimeList ?
+      <Form.Control className={styles.TimeInput} value={makeTimeStr(hour, min)} readOnly={readOnly}/>
+      {showTimeList && !readOnly ?
           <ListGroup className={styles.ListGroup}>
             {itemList}
           </ListGroup> :
