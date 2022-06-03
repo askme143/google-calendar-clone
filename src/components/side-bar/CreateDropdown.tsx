@@ -4,16 +4,16 @@ import {useDispatch, useSelector} from "react-redux";
 import styles from "./CreateDropdown.module.scss";
 import {openModal, setTempEvent} from "../../features/modal/modal-slice";
 import {RootState} from "../../store";
-import {getAlignedDate, HOUR_IN_MILLIS} from "../../data/date";
+import {getAlignedDate, HOUR_IN_MILLIS, synchTime} from "../../data/date";
 
 const MakeButton = () => {
   const date = useSelector((state: RootState) => state.date.value);
   const dispatch = useDispatch();
 
   const onClickCreateEvent = () => {
-    const startDate = getAlignedDate(date);
+    const startDate = getAlignedDate(synchTime(date));
+
     const endDate = new Date(startDate.getTime() + HOUR_IN_MILLIS);
-    console.log(startDate.toString());
 
     dispatch(setTempEvent({
       title: "",

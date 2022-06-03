@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Form, ListGroup} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
+import {makeTimeStr} from "../../../data/date";
 import {setTempEventEnd, setTempEventStart} from "../../../features/modal/modal-slice";
 import {useOutSideClick} from "../../../hooks";
 import {RootState} from "../../../store";
@@ -14,12 +15,6 @@ const timeList = Array(96).fill(0).map((_, idx) => {
   return {hour, min};
 });
 
-function makeTimeStr(hour: number, min: number) {
-  const ampm = hour < 12 ? "오전" : "오후";
-  const hStr = hour < 10 ? `0${hour}` : `${hour}`;
-  const mStr = min < 10 ? `0${min}` : `${min}`;
-  return `${ampm} ${hStr}:${mStr}`;
-}
 
 interface TimeContainerProp {
   isStart: boolean

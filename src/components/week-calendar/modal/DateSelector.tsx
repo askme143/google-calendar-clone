@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 
-import {format} from "date-fns";
 import {DayPicker} from "react-day-picker";
 import {useDispatch} from "react-redux";
 import {setDate} from "../../../features/date/date-slice";

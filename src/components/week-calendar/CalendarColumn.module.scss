@@ -1,9 +1,11 @@
 @import "../../colors.scss";
 
 .CalendarColumn {
+  position: relative;
   min-width: 100px;
   flex-grow: 1;
   height: fit-content;
+  padding-right: 12px;
 
   border-left: 1px solid $gray-border;
 }

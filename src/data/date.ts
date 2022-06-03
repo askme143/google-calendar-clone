@@ -40,6 +40,18 @@ export function getAlignedDate(date: Date): Date {
   return new Date(currentTime - (currentTime % alignedUnit) + alignedUnit);
 }
 
+export function synchTime(date: Date): Date {
+  const now = new Date();
+  const clone = new Date(date.getTime());
+
+  clone.setHours(now.getHours());
+  clone.setMinutes(now.getMinutes());
+  clone.setSeconds(now.getSeconds());
+  clone.setMilliseconds(now.getMilliseconds());
+
+  return clone;
+}
+
 export function movePrevWeek(date: Date): Date {
   return new Date(date.getTime() - WEEK_IN_MILLIS);
 }
@@ -66,6 +78,7 @@ export function isSameWeek(dateA: Date, dateB: Date): boolean {
   return getStartOfWeek(dateA).getTime() === getStartOfWeek(dateB).getTime();
 }
 
+
 export function dayNumToWeekDay(num: number): WeekDay | undefined {
   switch (num) {
     case 0: {return "SUN";}
@@ -91,3 +104,11 @@ export function toKorWeekDay(weekDay: WeekDay) {
   }
 };
 
+
+export function makeTimeStr(hour: number, min: number) {
+  const ampm = hour < 12 ? "오전" : "오후";
+  const hourTwelve = hour == 12 ? 12 : hour % 12;
+  const hStr = hourTwelve < 10 ? `0${hourTwelve}` : `${hourTwelve}`;
+  const mStr = min < 10 ? `0${min}` : `${min}`;
+  return `${ampm} ${hStr}:${mStr}`;
+}
