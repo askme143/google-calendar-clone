@@ -62,6 +62,10 @@ export function compareWithToday(date: Date): number {
   }
 }
 
+export function isSameWeek(dateA: Date, dateB: Date): boolean {
+  return getStartOfWeek(dateA).getTime() === getStartOfWeek(dateB).getTime();
+}
+
 export function dayNumToWeekDay(num: number): WeekDay | undefined {
   switch (num) {
     case 0: {return "SUN";}

@@ -53,6 +53,21 @@ export const modalSlice = createSlice(
             state.tempEvent.title =action.payload;
           }
         },
+        setTempEventAllDay: (state, action: PayloadAction<boolean>) => {
+          if (state.tempEvent !== null) {
+            state.tempEvent.allDay = action.payload;
+          }
+        },
+        setTempEventStart: (state, action : PayloadAction<Date>) => {
+          if (state.tempEvent !== null) {
+            state.tempEvent.start = action.payload;
+          }
+        },
+        setTempEventEnd: (state, action : PayloadAction<Date>) => {
+          if (state.tempEvent !== null) {
+            state.tempEvent.end = action.payload;
+          }
+        },
       },
     },
 );
@@ -67,5 +82,8 @@ export const {
   setTempEvent,
   clearTempEvent,
   setTempEventTitle,
+  setTempEventAllDay,
+  setTempEventStart,
+  setTempEventEnd,
 } = modalSlice.actions;
 export default modalSlice.reducer;

@@ -2,10 +2,11 @@ import React, {useEffect, useState} from "react";
 
 import {format} from "date-fns";
 import {DayPicker} from "react-day-picker";
-import "./MiniCalendar.scss";
 import {useSelector, useDispatch} from "react-redux";
 import {setDate} from "../../features/date/date-slice";
 import {RootState} from "../../store";
+
+import "./MiniCalendar.scss";
 
 const MiniCalendar = () => {
   const [month, setMonth] = useState<Date>();

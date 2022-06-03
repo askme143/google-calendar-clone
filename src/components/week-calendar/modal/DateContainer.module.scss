@@ -1,0 +1,25 @@
+.DateContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  .DateInput {
+    width: 116px;
+    font-size: 14px;
+    padding: 8px;
+
+    &:first-child {
+      margin-right: 4px;
+    }
+    &:last-child {
+      margin-left: 4px;
+    }
+  }
+  .DateSelector {
+    position: absolute;
+    background-color: white;
+    border-radius: 8px;
+    top: 39px;
+  }
+}

@@ -1,0 +1,29 @@
+.TimeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  .TimeInput {
+    width: 84px;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .ListGroup {
+    max-height: 200px;
+    width: 200px;
+
+    position: absolute;
+    top: 39px;
+
+    overflow: auto;
+
+    background-color: white;
+    .Item {
+      &:hover {
+        cursor: unset;
+      }
+    }
+  }
+}

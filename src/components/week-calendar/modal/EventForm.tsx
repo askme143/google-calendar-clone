@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {RootState} from "../../../store";
 import {setTempEventTitle} from "../../../features/modal/modal-slice";
 import {AiOutlineClockCircle} from "react-icons/ai";
+import TimeForm from "./TimeForm";
 
 import styles from "./EventForm.module.scss";
 
@@ -34,7 +35,7 @@ const EventForm = () => {
         <AiOutlineClockCircle/>
       </div>
       <div>
-          hello
+        <TimeForm/>
       </div>
     </Form>
   );

@@ -19,7 +19,7 @@ const ScheduleModal = () => {
   };
 
   return (
-    <Modal show={modalOpen} onHide={handleClose}>
+    <Modal show={modalOpen} onHide={handleClose} className={styles.Modal}>
       <Modal.Header className={styles.Header} closeButton/>
 
       <Modal.Body>
