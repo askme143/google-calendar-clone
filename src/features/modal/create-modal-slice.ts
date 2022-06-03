@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {UserEvent} from "../schedule/event-slice";
+import {UserEvent} from "../schedule/user-event-slice";
 
 
 export interface ModalState {
@@ -21,10 +21,10 @@ export const modalSlice = createSlice(
       name: "modal",
       initialState,
       reducers: {
-        openModal: (state) => {
+        openCreateModal: (state) => {
           state.modalOpen = true;
         },
-        closeModal: (state) => {
+        closeCreateModal: (state) => {
           state.modalOpen = false;
         },
         toEventModal: (state) => {
@@ -61,8 +61,8 @@ export const modalSlice = createSlice(
 );
 
 export const {
-  openModal,
-  closeModal,
+  openCreateModal,
+  closeCreateModal,
   toEventModal,
   setTempEvent,
   clearTempEvent,

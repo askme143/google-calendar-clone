@@ -2,7 +2,7 @@ import React from "react";
 import {Dropdown} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./CreateDropdown.module.scss";
-import {openModal, setTempEvent} from "../../features/modal/modal-slice";
+import {openCreateModal, setTempEvent} from "../../features/modal/create-modal-slice";
 import {RootState} from "../../store";
 import {getAlignedDate, HOUR_IN_MILLIS, synchTime} from "../../data/date";
 
@@ -21,7 +21,7 @@ const MakeButton = () => {
       end: endDate,
       allDay: false,
     }));
-    dispatch(openModal());
+    dispatch(openCreateModal());
   };
 
   return (

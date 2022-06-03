@@ -3,7 +3,7 @@ import {Form, ListGroup} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
 import {makeTimeStr} from "../../../data/date";
-import {setTempEventEnd, setTempEventStart} from "../../../features/modal/modal-slice";
+import {setTempEventEnd, setTempEventStart} from "../../../features/modal/create-modal-slice";
 import {useOutSideClick} from "../../../hooks";
 import {RootState} from "../../../store";
 
@@ -22,7 +22,7 @@ interface TimeContainerProp {
 
 const TimeContainer = ({isStart}: TimeContainerProp) => {
   const [showTimeList, setShowTimeList] = useState(false);
-  const tempEvent = useSelector((state:RootState) => state.modal.tempEvent);
+  const tempEvent = useSelector((state:RootState) => state.createModal.tempEvent);
   const dispatch = useDispatch();
 
   const ref = useOutSideClick<HTMLDivElement>(() => {

@@ -17,7 +17,7 @@ function makeDateStr(date: Date) {
 }
 
 const DateContainer = ({isStart}: DateContainerProp) => {
-  const tempEvent = useSelector((state: RootState) => state.modal.tempEvent);
+  const tempEvent = useSelector((state: RootState) => state.createModal.tempEvent);
   const ref = useOutSideClick<HTMLDivElement|null>(
       ()=>setShowCalendar(false),
       ()=>setShowCalendar(true),

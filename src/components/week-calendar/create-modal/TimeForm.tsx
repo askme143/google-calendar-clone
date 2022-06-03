@@ -2,14 +2,14 @@ import React from "react";
 import {Form} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../store";
-import {setTempEventAllDay} from "../../../features/modal/modal-slice";
+import {setTempEventAllDay} from "../../../features/modal/create-modal-slice";
 
 import styles from "./TimeForm.module.scss";
 import DateContainer from "./DateContainer";
 import TimeContainer from "./TimeContainer";
 
 const TimeForm = () => {
-  const tempEvent = useSelector((state: RootState) => state.modal.tempEvent);
+  const tempEvent = useSelector((state: RootState) => state.createModal.tempEvent);
   const dispatch = useDispatch();
 
   if (tempEvent === null) return <></>;

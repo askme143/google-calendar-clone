@@ -2,22 +2,21 @@ import React from "react";
 import {Button, Modal} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
-import {clearTempEvent, closeModal} from "../../../features/modal/modal-slice";
-import {appendEvent} from "../../../features/schedule/event-slice";
+import {clearTempEvent, closeCreateModal} from "../../../features/modal/create-modal-slice";
+import {appendEvent} from "../../../features/schedule/user-event-slice";
 import {RootState} from "../../../store";
 import EventForm from "./EventForm";
 
 import styles from "./ScheduleModal.module.scss";
 
 const ScheduleModal = () => {
-  const modalOpen = useSelector((state: RootState) => state.modal.modalOpen);
-  const modalType = useSelector((state: RootState) => state.modal.modalType);
-  const tempEvent = useSelector((state: RootState) => state.modal.tempEvent);
+  const modalOpen = useSelector((state: RootState) => state.createModal.modalOpen);
+  const tempEvent = useSelector((state: RootState) => state.createModal.tempEvent);
   const dispatch = useDispatch();
 
   const handleClose = () => {
     dispatch(clearTempEvent());
-    dispatch(closeModal());
+    dispatch(closeCreateModal());
   };
 
   const handleSave = () => {

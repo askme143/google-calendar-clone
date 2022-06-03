@@ -23,7 +23,7 @@ const initialState: UserEventState = {
 
 export const userEventSlice = createSlice(
     {
-      name: "event",
+      name: "userEvent",
       initialState,
       reducers: {
         appendEvent: (state, action: PayloadAction<UserEvent>) => {

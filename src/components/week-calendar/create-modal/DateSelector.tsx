@@ -4,7 +4,7 @@ import {DayPicker} from "react-day-picker";
 import {useDispatch} from "react-redux";
 import {setDate} from "../../../features/date/date-slice";
 import {isSameWeek} from "../../../data/date";
-import {setTempEventEnd, setTempEventStart} from "../../../features/modal/modal-slice";
+import {setTempEventEnd, setTempEventStart} from "../../../features/modal/create-modal-slice";
 
 interface DateSelectorProp {
   isStart: boolean,

@@ -14,7 +14,7 @@ interface CalendarColumnProp {
 }
 
 const CalendarColumn = ({startOfDay}: CalendarColumnProp) => {
-  const userEvents = useSelector((state:RootState) => state.event.value);
+  const userEvents = useSelector((state:RootState) => state.userEvent.value);
   const endOfDay = new Date(startOfDay.getTime() + DAY_IN_MILLIS - 1);
 
   const eventsOfDay = userEvents.filter((userEvent) => {

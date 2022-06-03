@@ -1,13 +1,13 @@
 import React from "react";
 import {DAY_IN_MILLIS, makeTimeStr, MINUTE_IN_MILLIS} from "../../../data/date";
-import {EventWithId} from "../../../features/schedule/event-slice";
+import {UserEventWithId} from "../../../features/schedule/user-event-slice";
 import styles from "./EventCell.module.scss";
 
 interface EventCellProp {
   startOfDay: Date;
   widthPercent: number;
   xPercent: number;
-  userEvent: EventWithId;
+  userEvent: UserEventWithId;
 }
 
 const WIDTH_PADDING_PX = 12;

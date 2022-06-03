@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Form} from "react-bootstrap";
 import {useSelector, useDispatch} from "react-redux";
 import {RootState} from "../../../store";
-import {setTempEventTitle} from "../../../features/modal/modal-slice";
+import {setTempEventTitle} from "../../../features/modal/create-modal-slice";
 import {AiOutlineClockCircle} from "react-icons/ai";
 import TimeForm from "./TimeForm";
 
@@ -10,7 +10,7 @@ import styles from "./EventForm.module.scss";
 
 
 const EventForm = () => {
-  const tempEvent = useSelector((state: RootState) => state.modal.tempEvent);
+  const tempEvent = useSelector((state: RootState) => state.createModal.tempEvent);
   const dispatch = useDispatch();
 
   const title = tempEvent?.title ?? "";
