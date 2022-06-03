@@ -2,12 +2,16 @@
 
 .EventCell {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+
   width: 100%;
   height: 48px;
-  top: 0px;
 
   margin-right: 12px;
-  padding: 4px 8px;
+  padding: 2px 8px;
 
   background-color: $purple-background;
   border-radius: 4px;
@@ -17,5 +21,13 @@
 
   &:hover {
     cursor: pointer;
+  }
+  .Time,
+  .Title {
+    margin-right: 2px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }

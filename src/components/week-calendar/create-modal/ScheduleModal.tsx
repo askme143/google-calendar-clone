@@ -2,7 +2,7 @@ import React from "react";
 import {Button, Modal} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
-import {clearTempEvent, clearTempTask, closeModal} from "../../../features/modal/modal-slice";
+import {clearTempEvent, closeModal} from "../../../features/modal/modal-slice";
 import {appendEvent} from "../../../features/schedule/event-slice";
 import {RootState} from "../../../store";
 import EventForm from "./EventForm";
@@ -17,7 +17,6 @@ const ScheduleModal = () => {
 
   const handleClose = () => {
     dispatch(clearTempEvent());
-    dispatch(clearTempTask());
     dispatch(closeModal());
   };
 

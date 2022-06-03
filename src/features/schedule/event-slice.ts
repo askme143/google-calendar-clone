@@ -1,32 +1,32 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {v4 as uuidv4} from "uuid";
 
-export interface Event {
+export interface UserEvent {
   title: string,
   start: Date,
   end: Date,
   allDay: boolean,
 }
 
-export interface EventWithId{
+export interface UserEventWithId{
   id: string,
-  event: Event
+  event: UserEvent
 }
 
-export interface EventState {
-  value: EventWithId[]
+export interface UserEventState {
+  value: UserEventWithId[]
 }
 
-const initialState: EventState = {
+const initialState: UserEventState = {
   value: [],
 };
 
-export const eventSlice = createSlice(
+export const userEventSlice = createSlice(
     {
       name: "event",
       initialState,
       reducers: {
-        appendEvent: (state, action: PayloadAction<Event>) => {
+        appendEvent: (state, action: PayloadAction<UserEvent>) => {
           const id = uuidv4();
           const event = action.payload;
 
@@ -38,7 +38,7 @@ export const eventSlice = createSlice(
 
           state.value.splice(index, 1);
         },
-        updateEvent: (state, action: PayloadAction<EventWithId>) => {
+        updateEvent: (state, action: PayloadAction<UserEventWithId>) => {
           const {id, event} = action.payload;
           const oldEvent = state.value.find((event) => event.id === id);
           if (typeof oldEvent !== "undefined") {
@@ -49,5 +49,5 @@ export const eventSlice = createSlice(
     },
 );
 
-export const {appendEvent, removeEvent, updateEvent} = eventSlice.actions;
-export default eventSlice.reducer;
+export const {appendEvent, removeEvent, updateEvent} = userEventSlice.actions;
+export default userEventSlice.reducer;

@@ -3,7 +3,7 @@ import CalendarSide from "./CalendarSide";
 import styles from "./CalendarContent.module.scss";
 import CalendarColumn from "./CalendarColumn";
 import {ScrollSyncPane} from "react-scroll-sync";
-import ScheduleModal from "./modal/ScheduleModal";
+import ScheduleModal from "./create-modal/ScheduleModal";
 import {getDatesOfWeek} from "../../data/date";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store";

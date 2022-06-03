@@ -60,12 +60,8 @@ const EventCell = (
         height,
       }}
       className={styles.EventCell}>
-      <div className={styles.Title}>
-        <span>{title.length ? title : "(제목 없음)"}</span>
-      </div>
-      <div className={styles.Time}>
-        <span>{timeStr}</span>
-      </div>
+      <div className={styles.Title}>{title.length ? title : "(제목 없음)"}</div>
+      <div className={styles.Time}>{timeStr}</div>
     </div>);
 };
 
