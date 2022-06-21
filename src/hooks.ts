@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from "react";
 
-export function useOutSideClick<T>(
+export function useOutSideClick<T extends HTMLElement>(
     onClickOutside: () => any,
     onClickInside: () => any,
 ): React.MutableRefObject<T> {
@@ -25,5 +25,5 @@ export function useOutSideClick<T>(
     };
   }, [ref]);
 
-  return ref as unknown as React.MutableRefObject<T>;
+  return ref as React.MutableRefObject<T>;
 }

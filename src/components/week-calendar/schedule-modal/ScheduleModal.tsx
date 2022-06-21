@@ -2,7 +2,7 @@ import React, {useRef} from "react";
 import {Button, Modal} from "react-bootstrap";
 import {useDispatch} from "react-redux";
 import {useSelector} from "react-redux";
-import {clearTempEvent, closeModal} from "../../../features/modal/schedule-modal-slice";
+import {closeModal} from "../../../features/modal/schedule-modal-slice";
 import {appendEvent, updateEvent} from "../../../features/schedule/user-event-slice";
 import {RootState} from "../../../store";
 import EventForm from "./EventForm";
