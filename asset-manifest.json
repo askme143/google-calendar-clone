@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/google-calendar-clone/static/css/main.7c71485c.css",
-    "main.js": "/google-calendar-clone/static/js/main.b08d8530.js",
+    "main.js": "/google-calendar-clone/static/js/main.9d4716a4.js",
     "index.html": "/google-calendar-clone/index.html",
     "main.7c71485c.css.map": "/google-calendar-clone/static/css/main.7c71485c.css.map",
-    "main.b08d8530.js.map": "/google-calendar-clone/static/js/main.b08d8530.js.map"
+    "main.9d4716a4.js.map": "/google-calendar-clone/static/js/main.9d4716a4.js.map"
   },
   "entrypoints": [
     "static/css/main.7c71485c.css",
-    "static/js/main.b08d8530.js"
+    "static/js/main.9d4716a4.js"
   ]
 }
